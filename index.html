@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>百度一下，你就知道</title>
+    <link rel="shortcut icon" href="https://www.baidu.com/favicon.ico" type="image/x-icon">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!-- bootstrap css库 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!-- bootstrap js库 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <!-- jq库 -->
+    <script type="text/javascript" src="http://www.imooc.com/data/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var same = 0;
+            var interval = 2000;
+            var timer;
+            $("#player img").hide();
+            $("#player img").eq(0).show();
+            $("#tags img").mouseover(function () {
+                var tags = $("#tags img").index(this);
+                if (same != tags) {
+                    $("#player img").fadeOut();
+                    $("#player img").eq(tags).fadeIn(500);
+                }
+                same = tags;
+            })
+
+            function autoplay() {
+                same++;
+                if (same >= $("#tags img").length) {
+                    same = 0;
+                }
+                $("#player img").fadeOut();
+                $("#player img").eq(same).fadeIn(500);
+            }
+
+            function play() {
+                timer = setInterval(autoplay, interval);
+            }
+
+            function stop() {
+                clearInterval(timer);
+            }
+
+            $("#content").hover(function () {
+                    stop();
+                },
+                function () {
+                    play();
+                })
+
+            play();
+        })
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">新闻</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">hao123 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">地图</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">视频</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">贴吧</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">学术</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">地图</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        更多
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">知道</a>
+                        <a class="dropdown-item" href="#">文库</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">音乐</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- jquery轮播切换部分 -->
+    <div class="pic">
+        <div id="player">
+            <img src="http://wdlj.zoomdong.xin/baidu1.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu2.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu3.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu4.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu5.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu6.jpg" />
+        </div>
+        <div id="tags">
+            <img src="http://wdlj.zoomdong.xin/baidu1.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu2.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu3.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu4.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu5.jpg">
+            <img src="http://wdlj.zoomdong.xin/baidu6.jpg">
+        </div>
+    </div>
+
+    <div class="logo">
+        <img src="https://www.baidu.com/img/dong_30688b45cdf667c7634a2a5ca98c3862.gif" alt="baidulogo" title="百度一下"
+            width="281px" height="120px">
+    </div>
+    <div class="searchk">
+        <form action="http://www.baidu.com/baidu" target="_blank">
+            <input name=tn type=hidden value=baidu>
+            <input type="text" name="word" size=30 class="text-one">
+            <input type="submit" value="百度一下" class="text-two">
+        </form>
+    </div>
+
+    <!-- 3d轮播图板块 -->
+    <div id="banner">
+        <!--身体,可视化部分-->
+        <ul>
+            <li class="first"><img src="http://wdlj.zoomdong.xin/baiduheader.jpg" /></li>
+            <li class="second"><img src="http://wdlj.zoomdong.xin/baidu3d2.jpg" /></li>
+            <li class="third"><img src="http://wdlj.zoomdong.xin/baidu3d3.jpg" /></li>
+            <li class="forth"><img src="http://wdlj.zoomdong.xin/baidu3d4.jpg" /></li>
+            <li class="center"><img src="http://wdlj.zoomdong.xin/baiduheader.jpg" /></li>
+            <li class="forth sixth"><img src="http://wdlj.zoomdong.xin/baidu3d2.jpg" /></li>
+            <li class="third seven"><img src="http://wdlj.zoomdong.xin/baidu3d3.jpg" /></li>
+            <li class="second last"><img src="http://wdlj.zoomdong.xin/baidu3d4.jpg" /></li>
+        </ul>
+        <div class="btn">
+            <div class="left btn1"></div>
+            <div class="right btn1"></div>
+        </div>
+    </div>
+    <!-- 底部广告区 -->
+    <div class="header">
+        <div class="qcode">
+            <img src="https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/home/img/qrcode/zbios_efde696.png"
+                alt="emm">
+            <p>百度</p>
+        </div>
+        <div class="ftCon-Wrapper">
+            <div id="ftConw">
+                <p id="lh">
+                    <a id="setf" 
+                       href="//www.baidu.com/cache/sethelp/help.html" 
+                       target="_blank">把百度设为主页
+                    </a>
+                    <a href="http://home.baidu.com">
+                        关于百度
+                    </a>
+                    <a href="http://ir.baidu.com">
+                        About&nbsp;&nbsp;Baidu
+                    </a>
+                    <a href="http://e.baidu.com/?refer=888">
+                        百度推广
+                    </a>
+                </p>
+                <p id="cp">&copy;2018&nbsp;Baidu&nbsp;<a href="http://www.baidu.com/duty/">使用百度前必读</a>&nbsp;<a
+                        href="http://jianyi.baidu.com/" class="cp-feedback">意见反馈</a>&nbsp;京ICP证030173号&nbsp;<i
+                        class="c-icon-icrlogo"></i>&nbsp;<a id="jgwab" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000001">京公网安备11000002000001号</a>&nbsp;
+                        <i class="c-icon-jgwablogo"></i></p>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="c-tips-container" id="c-tips-container"></div>>
+    <!-- 3d轮播图部分 -->
+    <script src="./js/jquery-1.8.1.min.js"></script>
+    <script src="./js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var move = true;
+        $(".btn .left").click(function () { //往左交换
+            //当上一次的动画执行完成了才能执行下一次
+            if (move) {
+                move = false;
+                tab(true);
+            }
+        })
+        $(".btn .right").click(function () {
+            if (move) {
+                move = false;
+                tab(false);
+            }
+        })
+        //封装一个函数,来进行交换
+        function tab(dir) { //形参
+            //获取每个li的宽高  left top z-index
+            var arrW = [],
+                arrH = [],
+                arrL = [],
+                arrT = [],
+                arrZ = [];
+            $("#banner ul li").each(function (i) { //相当于进行了一个循环
+                //  console.log(i)
+                arrW[i] = $(this).css("width");
+                arrH[i] = $(this).css("height");
+                arrL[i] = $(this).css("left");
+                arrT[i] = $(this).css("top");
+                arrZ[i] = $(this).css("z-index");
+            })
+            //依次给每个li赋值
+            $("#banner ul li").each(function (i) {
+                var n;
+                if (dir) { //点击左按钮
+                    n = i - 1;
+                    if (n < 0) {
+                        n = 7;
+                    }
+                } else { //点击右按钮
+                    n = i + 1;
+                    if (n > 7) {
+                        n = 0;
+                    }
+                }
+                $(this).css("z-index", arrZ[n]);
+                $(this).animate({
+                    "width": arrW[n],
+                    "height": arrH[n],
+                    "left": arrL[n],
+                    "top": arrT[n]
+                }, 500, function () {
+                    move = true;
+                });
+            })
+        }
+    </script>
+</body>
+
+</html>
